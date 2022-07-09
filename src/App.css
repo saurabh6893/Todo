@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
+body {
+  background-color: #fcf8e8;
+}
+
 .App {
   text-align: center;
 }
@@ -28,11 +34,94 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2% 0.5% 2% 0.5%;
+}
+
+.appbox {
+  width: 40vw;
+  /* border: 2px solid black; */
+  height: auto;
+}
+
+input {
+  font-family: 'Roboto Slab', serif;
+  margin: 2% 0.5%;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+  width: 50%;
+  outline: none;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.appbox {
+  position: relative;
+  height: 93vh;
+}
+.adder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-solid.fa-plus {
+  position: relative;
+  right: 5%;
+}
+
+.itemtop {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.itemdescription > p {
+  width: 90%;
+  left: 50%;
+  text-align: left;
+  transform: translateX(-50%);
+  position: relative;
+}
+
+.btm {
+  display: flex;
+  position: relative;
+  right: -10%;
+  transform: translateX(110%);
+  justify-content: flex-end;
+  padding: 20px 50px 20px 0px;
+}
+.btm > * {
+  padding: 2px;
+}
+
+.itembox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Item {
+  border-radius: 50px;
+  border: 2px solid black;
+  width: 90%;
+  margin: 2.5% 0%;
+}
+
+.Checklist {
+  margin-top: 25px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2%;
+}
+
+.btxx {
+  padding: 10px 50px;
 }
