@@ -1,16 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Ico from '../Assets/checklist.svg'
+
+const getLocalData = () => {
+  let theTasks = localStorage.getItem('theTasks')
+
+  if (theTasks) {
+    return JSON.parse(localStorage.getItem('theTasks'))
+  } else {
+    return []
+  }
+}
 
 function Todo() {
   const [title, setTitle] = useState('')
   const [timer, setTimer] = useState('')
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(getLocalData())
 
   const removeItem = (id) => {
     const updatedItems = tasks.filter((elem, ind) => {
       return ind !== id
     })
-
     setTasks(updatedItems)
   }
 
@@ -34,6 +43,11 @@ function Todo() {
   const removeall = () => {
     setTasks([])
   }
+
+  useEffect(() => {
+    localStorage.setItem('theTasks', JSON.stringify(tasks))
+  }, [tasks])
+
   return (
     <div className='main'>
       <div className='appbox'>
