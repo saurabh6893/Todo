@@ -3,25 +3,36 @@ import Ico from '../Assets/checklist.svg'
 
 function Todo() {
   const [title, setTitle] = useState('')
-  const [items, setItems] = useState([])
+  const [timer, setTimer] = useState('')
+  const [tasks, setTasks] = useState([])
 
   const removeItem = (id) => {
-    const updatedItems = items.filter((elem, ind) => {
+    const updatedItems = tasks.filter((elem, ind) => {
       return ind !== id
     })
 
-    setItems(updatedItems)
+    setTasks(updatedItems)
   }
-  const addItem = () => {
+
+  const addTask = () => {
     if (!title) {
     } else {
-      setItems([...items, title])
+      const M = new Date().getMinutes().toString()
+      const H = new Date().getHours().toString()
+      const T = `${H}:${M}`
+      setTimer(T)
+      const tBody = {
+        timer: T,
+        title: title,
+      }
+      setTasks([...tasks, tBody])
       setTitle('')
+      setTimer('')
     }
   }
 
   const removeall = () => {
-    setItems([])
+    setTasks([])
   }
   return (
     <div className='main'>
@@ -36,27 +47,28 @@ function Todo() {
             type='text'
             placeholder='Enter task'
             value={title}
+            name={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <i
             class='fa-solid fa-plus add-btn'
             title='add item'
-            onClick={addItem}
+            onClick={addTask}
           ></i>
         </div>
 
         <div className='itembox'>
-          {items.map((elem, ind) => {
+          {tasks.map((elem, id) => {
             return (
-              <div className='Item' key={ind}>
+              <div className='Item' key={id}>
                 <div className='itemtop'>
-                  <div className='dateStamp'>date</div>
-                  <h3>{elem}</h3>
+                  <div className='dateStamp'>{elem.timer}</div>
+                  <h3>{elem.title}</h3>
                   <div className='btm'>
                     <i
                       class='fa-solid fa-trash-alt add-btn'
                       title='remove item'
-                      onClick={() => removeItem(ind)}
+                      onClick={() => removeItem(id)}
                     ></i>
                   </div>
                 </div>
